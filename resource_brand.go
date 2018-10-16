@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client"
@@ -31,17 +32,19 @@ func resourceBrandCreate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*client.Fleetmanager)
 
 	params := fleet_brand.NewPostFleetTenantTenantIDBrandParams()
-	params.WithTenantID("HM")
+	params.WithTenantID("hm")
 	params.WithBody(&models.CreateFleetBrand{Name: &name})
 
 	res, err := client.FleetBrand.PostFleetTenantTenantIDBrand(params)
 
 	if err != nil {
-		log.Printf("Failed to creare brand %q", err)
+		log.Printf("Failed to create brand %q", err)
 		return err
 	}
 
-	log.Printf(res.Location)
+	components := strings.Split(res.Location, "/")
+	brandId := components[len(components)-1]
+	d.SetId(brandId)
 
 	return nil
 }
