@@ -71,6 +71,24 @@ func resourceBrandRead(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceBrandUpdate(d *schema.ResourceData, m interface{}) error {
+	name := d.Get("name").(string)
+
+	client := m.(*client.Fleetmanager)
+
+	params := fleet_brand.NewPutFleetTenantTenantIDBrandBrandIDParams()
+	params.WithBrandID(d.Id())
+	params.WithTenantID("hm")
+	params.WithBody(&models.UpdateFleetBrand{Name: &name})
+
+	_, err := client.FleetBrand.PutFleetTenantTenantIDBrandBrandID(params)
+
+	if err != nil {
+		log.Printf("Failed to find brand %q", err)
+		d.SetId("")
+
+		return nil
+	}
+
 	return nil
 }
 
