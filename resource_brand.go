@@ -61,12 +61,12 @@ func resourceBrandRead(d *schema.ResourceData, m interface{}) error {
 		log.Printf("Failed to find brand %q", err)
 		d.SetId("")
 
-    return nil
+		return nil
 	}
 
-  d.Set("name", res.Payload.Name)
+	d.Set("name", res.Payload.Name)
 
-  return nil
+	return nil
 }
 
 func resourceBrandUpdate(d *schema.ResourceData, m interface{}) error {
