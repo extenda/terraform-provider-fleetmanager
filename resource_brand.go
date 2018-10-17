@@ -50,7 +50,23 @@ func resourceBrandCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceBrandRead(d *schema.ResourceData, m interface{}) error {
-	return nil
+	client := m.(*client.Fleetmanager)
+
+	params := fleet_brand.NewGetFleetTenantTenantIDBrandBrandIDParams()
+	params.WithBrandID(d.Id())
+	params.WithTenantID("hm")
+	res, err := client.FleetBrand.GetFleetTenantTenantIDBrandBrandID(params)
+
+	if err != nil {
+		log.Printf("Failed to find brand %q", err)
+		d.SetId("")
+
+    return nil
+	}
+
+  d.Set("name", res.Payload.Name)
+
+  return nil
 }
 
 func resourceBrandUpdate(d *schema.ResourceData, m interface{}) error {
