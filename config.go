@@ -6,7 +6,7 @@ import (
 )
 
 type Config struct {
-	Host  string
+	Host     string
 	TenantID string
 }
 

@@ -4,10 +4,10 @@ import (
 	"log"
 	"strings"
 
-	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client"
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet_brand"
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/models"
+	"github.com/hashicorp/terraform/helper/schema"
 )
 
 func resourceBrand() *schema.Resource {
@@ -39,6 +39,7 @@ func resourceBrandCreate(d *schema.ResourceData, m interface{}) error {
 
 	if err != nil {
 		log.Printf("Failed to create brand %q", err)
+
 		return err
 	}
 

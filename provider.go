@@ -27,7 +27,7 @@ func Provider() *schema.Provider {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	config := Config{
-		Host:  d.Get("host").(string),
+		Host:     d.Get("host").(string),
 		TenantID: d.Get("tenant_id").(string),
 	}
 
