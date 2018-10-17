@@ -93,5 +93,19 @@ func resourceBrandUpdate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceBrandDelete(d *schema.ResourceData, m interface{}) error {
+	client := m.(*client.Fleetmanager)
+
+	params := fleet_brand.NewDeleteFleetTenantTenantIDBrandBrandIDParams()
+	params.WithBrandID(d.Id())
+	params.WithTenantID("hm")
+
+	_, err := client.FleetBrand.DeleteFleetTenantTenantIDBrandBrandID(params)
+
+	if err != nil {
+		log.Printf("Failed to find brand %q", err)
+
+		return nil
+	}
+
 	return nil
 }

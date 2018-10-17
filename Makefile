@@ -3,7 +3,9 @@ build:
 	terraform init
 
 clean:
-	rm terraform-provider-fleetmanager
+	go clean
+	rm terraform.tfstate
+	rm terraform.tfstate.backup
 
 install: build
 	mkdir -p ~/.terraform.d/plugins
