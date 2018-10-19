@@ -1,10 +1,11 @@
-package main
+package fleetmanager
 
 import (
+	"github.com/hashicorp/terraform/terraform"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func Provider() *schema.Provider {
+func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
 			"host": {

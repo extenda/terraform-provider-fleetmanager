@@ -1,4 +1,4 @@
-package main
+package fleetmanager
 
 import (
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager"
