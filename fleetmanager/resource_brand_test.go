@@ -3,7 +3,7 @@ package fleetmanager
 import (
 	"testing"
 
-	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet_brand"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
 )
@@ -39,12 +39,12 @@ func testBrandDestroyHelper(s *terraform.State, tenant *Tenant) error {
 	client := tenant.Client
 
 	for _, r := range s.RootModule().Resources {
-		params := fleet_brand.NewGetFleetTenantTenantIDBrandBrandIDParams()
+		params := fleet.NewGetBrandByIDParams()
 		params.WithBrandID(r.Primary.ID)
 		params.WithTenantID(tenant.ID)
-		_, err := client.FleetBrand.GetFleetTenantTenantIDBrandBrandID(params)
+		_, err := client.Fleet.GetBrandByID(params)
 
-		if _, ok := err.(*fleet_brand.GetFleetTenantTenantIDBrandBrandIDNotFound); !ok {
+		if _, ok := err.(*fleet.GetBrandByIDNotFound); !ok {
 			return err
 		}
 	}
@@ -67,10 +67,10 @@ func testBrandExistsHelper(s *terraform.State, tenant *Tenant) error {
 	client := tenant.Client
 
 	for _, r := range s.RootModule().Resources {
-		params := fleet_brand.NewGetFleetTenantTenantIDBrandBrandIDParams()
+		params := fleet.NewGetBrandByIDParams()
 		params.WithBrandID(r.Primary.ID)
 		params.WithTenantID(tenant.ID)
-		_, err := client.FleetBrand.GetFleetTenantTenantIDBrandBrandID(params)
+		_, err := client.Fleet.GetBrandByID(params)
 
 		if err != nil {
 			return err
