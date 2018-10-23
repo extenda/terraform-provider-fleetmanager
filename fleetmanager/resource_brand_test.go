@@ -5,19 +5,8 @@ import (
 
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet_brand"
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )
-
-var testAccProviders map[string]terraform.ResourceProvider
-var testAccProvider *schema.Provider
-
-func init() {
-	testAccProvider = Provider().(*schema.Provider)
-	testAccProviders = map[string]terraform.ResourceProvider{
-		"fleetmanager": testAccProvider,
-	}
-}
 
 func TestAccFleetManagerBrand(t *testing.T) {
 	resource.Test(t, resource.TestCase{
