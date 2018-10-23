@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet_brand"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet"
 	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/models"
 	"github.com/hashicorp/terraform/helper/schema"
 )
@@ -30,11 +30,11 @@ func resourceBrandCreate(d *schema.ResourceData, m interface{}) error {
 	client := tenant.Client
 	name := d.Get("name").(string)
 
-	params := fleet_brand.NewPostFleetTenantTenantIDBrandParams()
+	params := fleet.NewCreateBrandParams()
 	params.WithTenantID(tenant.ID)
 	params.WithBody(&models.CreateFleetBrand{Name: &name})
 
-	res, err := client.FleetBrand.PostFleetTenantTenantIDBrand(params)
+	res, err := client.Fleet.CreateBrand(params)
 
 	if err != nil {
 		log.Printf("Failed to create brand %q", err)
@@ -53,10 +53,10 @@ func resourceBrandRead(d *schema.ResourceData, m interface{}) error {
 	tenant := m.(*Tenant)
 	client := tenant.Client
 
-	params := fleet_brand.NewGetFleetTenantTenantIDBrandBrandIDParams()
+	params := fleet.NewGetBrandByIDParams()
 	params.WithBrandID(d.Id())
 	params.WithTenantID(tenant.ID)
-	res, err := client.FleetBrand.GetFleetTenantTenantIDBrandBrandID(params)
+	res, err := client.Fleet.GetBrandByID(params)
 
 	if err != nil {
 		log.Printf("Failed to find brand %q", err)
@@ -75,12 +75,12 @@ func resourceBrandUpdate(d *schema.ResourceData, m interface{}) error {
 	client := tenant.Client
 	name := d.Get("name").(string)
 
-	params := fleet_brand.NewPutFleetTenantTenantIDBrandBrandIDParams()
+	params := fleet.NewUpdateBrandParams()
 	params.WithBrandID(d.Id())
 	params.WithTenantID(tenant.ID)
 	params.WithBody(&models.UpdateFleetBrand{Name: &name})
 
-	_, err := client.FleetBrand.PutFleetTenantTenantIDBrandBrandID(params)
+	_, err := client.Fleet.UpdateBrand(params)
 
 	if err != nil {
 		log.Printf("Failed to find brand %q", err)
@@ -96,11 +96,11 @@ func resourceBrandDelete(d *schema.ResourceData, m interface{}) error {
 	tenant := m.(*Tenant)
 	client := tenant.Client
 
-	params := fleet_brand.NewDeleteFleetTenantTenantIDBrandBrandIDParams()
+	params := fleet.NewDeleteBrandParams()
 	params.WithBrandID(d.Id())
 	params.WithTenantID(tenant.ID)
 
-	_, err := client.FleetBrand.DeleteFleetTenantTenantIDBrandBrandID(params)
+	_, err := client.Fleet.DeleteBrand(params)
 
 	if err != nil {
 		log.Printf("Failed to find brand %q", err)
