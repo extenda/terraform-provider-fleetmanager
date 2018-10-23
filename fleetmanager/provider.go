@@ -20,7 +20,8 @@ func Provider() terraform.ResourceProvider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"fleetmanager_brand": resourceBrand(),
+			"fleetmanager_brand":   resourceBrand(),
+			"fleetmanager_country": resourceCountry(),
 		},
 		ConfigureFunc: providerConfigure,
 	}
