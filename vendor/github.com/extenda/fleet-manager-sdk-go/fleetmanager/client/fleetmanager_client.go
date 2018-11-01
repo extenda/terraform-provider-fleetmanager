@@ -11,10 +11,10 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"fleet-manager-sdk-go/fleetmanager/client/driver"
-	"fleet-manager-sdk-go/fleetmanager/client/fleet"
-	"fleet-manager-sdk-go/fleetmanager/client/inventory"
-	"fleet-manager-sdk-go/fleetmanager/client/software"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/driver"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/fleet"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/inventory"
+	"github.com/extenda/fleet-manager-sdk-go/fleetmanager/client/software"
 )
 
 // Default fleetmanager HTTP client.

@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "fleet-manager-sdk-go/fleetmanager/models"
+	models "github.com/extenda/fleet-manager-sdk-go/fleetmanager/models"
 )
 
 // NewUpdateCountryParams creates a new UpdateCountryParams object

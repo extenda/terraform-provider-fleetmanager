@@ -1,1 +1,0 @@
-# fleet-manager-sdk-go

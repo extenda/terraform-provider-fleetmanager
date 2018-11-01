@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "fleet-manager-sdk-go/fleetmanager/models"
+	models "github.com/extenda/fleet-manager-sdk-go/fleetmanager/models"
 )
 
 // UploadTenantSystemPropertiesReader is a Reader for the UploadTenantSystemProperties structure.
