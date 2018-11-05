@@ -10,8 +10,8 @@ func Provider() terraform.ResourceProvider {
 		Schema: map[string]*schema.Schema{
 			"host": {
 				Type:        schema.TypeString,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("FM_HOST", nil),
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("FM_HOST", "api.fleetmanager.extendaretail.com"),
 			},
 			"tenant_id": {
 				Type:        schema.TypeString,

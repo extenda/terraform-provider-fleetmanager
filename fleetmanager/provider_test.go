@@ -25,10 +25,6 @@ func TestProvider(t *testing.T) {
 }
 
 func testAccPreCheck(t *testing.T) {
-	if v := os.Getenv("FM_HOST"); v == "" {
-		t.Fatal("FM_HOST must be set for acceptance tests")
-	}
-
 	if v := os.Getenv("FM_TENANT"); v == "" {
 		t.Fatal("FM_TENANT must be set for acceptance tests")
 	}

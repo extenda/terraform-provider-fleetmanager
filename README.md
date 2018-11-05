@@ -73,4 +73,5 @@ In order to run the full suite of acceptance tests, run `make testacc`.
 $ make testacc
 ```
 
-*Note:* Acceptance tests run against the real API and will need both the host (`FM_HOST`) and tenant ID set (`FM_TENANT`).
+*Note:* Acceptance tests run against the real API and will need the tenant ID
+set (`FM_TENANT`).
