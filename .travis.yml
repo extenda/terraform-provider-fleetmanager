@@ -6,7 +6,7 @@ language: go
 go:
 - "1.10.x"
 env:
-  - FM_HOST=ye2v8tt0o2.execute-api.eu-west-1.amazonaws.com FM_TENANT=711ef17b-1945-40f5-a048-30af1ec94566
+  - FM_TENANT=711ef17b-1945-40f5-a048-30af1ec94566
 
 install:
 # This script is used by the Travis build to install a cookie for
